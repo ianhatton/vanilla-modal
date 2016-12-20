@@ -125,7 +125,7 @@ class ModalClass{
   }
 
   _overlayClick(e){
-    if (e.target === this.overlay){
+    if (e.target === this.overlay && this.open){
       e.preventDefault();
 
       this._setModalVisibility();
