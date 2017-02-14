@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const _ = require('lodash/core');
 _.includes = require('lodash/includes');
 
@@ -36,15 +37,11 @@ class ModalClass{
   }
 
   _addOverlayClickListener(){
-    /* eslint-disable max-len */
     this.overlay.addEventListener('click', this._overlayClick.bind(this), false);
-    /* eslint-enable */
   }
 
   _addOverlayTouchListener(){
-    /* eslint-disable max-len */
     this.overlay.addEventListener('touchstart', this._overlayTouch.bind(this), false);
-    /* eslint-enable */
   }
 
   _addToggleClickListener(){
@@ -67,7 +64,7 @@ class ModalClass{
   }
 
   _createClose(){
-    let span = document.createElement('span');
+    const span = document.createElement('span');
     this.close = document.createElement('a');
 
     span.innerHTML = 'close';
@@ -105,23 +102,19 @@ class ModalClass{
   }
 
   _getSource(){
-    /* eslint-disable max-len */
-    this.source = this.config.element.querySelector('.' + this.config.sourceClass);
-    /* eslint-enable */
+    this.source = this.config.element.querySelector(`.${this.config.sourceClass}`);
   }
 
   _getToggle(){
-    /* eslint-disable max-len */
-    this.toggle = this.config.element.querySelector('.' + this.config.toggleClass);
-    /* eslint-enable */
+    this.toggle = this.config.element.querySelector(`.${this.config.toggleClass}`);
 
     this._addToggleClickListener();
   }
 
   _lazyLoadImages(){
-    let images = this.content.querySelectorAll('img');
+    const images = Array.from(this.content.querySelectorAll('img'));
 
-    _.forEach(images, (image)=>{
+    images.forEach((image)=>{
       let dataSrc = image.getAttribute('data-src');
       let src = image.getAttribute('src');
 
@@ -155,7 +148,7 @@ class ModalClass{
   }
 
   _setContentClass(){
-    let className = this.content.className;
+    const className = this.content.className;
 
     if (_.includes(className, 'active')){
       this.content.className = className.replace(/(?:^|\s)active(?!\S)/g, '');
@@ -209,3 +202,4 @@ class ModalClass{
 }
 
 module.exports = ModalClass;
+/* eslint-enable */
